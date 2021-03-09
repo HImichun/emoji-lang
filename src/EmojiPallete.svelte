@@ -8,6 +8,10 @@
 	function handleClick(emoji: string) {
 		dispatch("input", emoji)
 	}
+
+	function copyText() {
+		dispatch("copy")
+	}
 </script>
 
 <main>
@@ -30,6 +34,9 @@
 			<button on:click={()=>currentTab = "things"}>🎳</button>
 			<button on:click={()=>currentTab = "misc"}>🚮</button>
 			<button on:click={()=>currentTab = "flags"}>🏳️‍⚧️</button>
+			<span class="separator"></span>
+			<button on:click={copyText}></button>
+			<button on:click={copyText}>📋</button>
 		</div>
 	</div>
 </main>
@@ -43,7 +50,7 @@
 	.pallete {
 		display: grid;
 		grid-template-columns: 1fr auto;
-		grid-template-rows: auto 1fr;
+		grid-template-rows: auto auto 1fr;
 		gap: 1em;
 	}
 
@@ -59,7 +66,7 @@
 	}
 
 	.list {
-		grid-row: 2;
+		grid-row: 2/4;
 
 		max-width: 100%;
 		max-height: 20em;
@@ -73,5 +80,10 @@
 		display: flex;
 		flex-direction: column;
 		border: 1px solid black;
+	}
+
+	.separator {
+		min-width: 1em;
+		min-height: 1em;
 	}
 </style>

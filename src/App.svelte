@@ -20,11 +20,18 @@ import { tick } from "svelte";
 		await tick()
 		inputField.setSelectionRange(newPos, newPos)
 	}
+
+	function handleCopy() {
+		navigator.clipboard.writeText(text)
+	}
 </script>
 
 <main>
 	<textarea type="text" bind:this={inputField} bind:value={text}/>
-	<EmojiPallete on:input={handleEmojiInput}/>
+	<EmojiPallete
+		on:input={handleEmojiInput}
+		on:copy={handleCopy}
+	/>
 </main>
 
 <style>
